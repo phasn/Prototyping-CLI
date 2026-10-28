@@ -40,10 +40,11 @@ export const API = {
 						if(n>130) break;
 						str += `\x1b[0\;${n}m${n.toString().padStart(3)}`;
 					}
-					console.log(str);
-					str = '';
+					str += '\n';
 				}
-				return console.br();
+				console.log(str);
+				console.br();
+				return str;
 			}
 		},
 
@@ -57,9 +58,10 @@ export const API = {
 				for(let col in uC.codes){
 					console.log(`${uC.r}${col.padEnd(16,' ')}${uC.codes[col]}${col.padEnd(16,' ')}\\x1b${uC.codes[col].substring(1)}${uC.r}`);
 				}
-				return console.br();
+				console.br();
 			}
 		},
+
 	//	=========================
 	//	<<<<<<<< formats >>>>>>>>
 	//	=========================
@@ -80,7 +82,8 @@ export const API = {
 	${uC.str}strikethrough${uC.r}
 	${uC.du}double underscore${uC.r}\n`;
 				//	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				return console.log(testStr);
+				console.log(testStr);
+				return testStr;
 			}
 		},
 
@@ -96,7 +99,7 @@ export const API = {
 			],
 			execute(){
 				//	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				let testStr = `${uC.r}
+				let testStr = `${uC.r}Bold        Normal      Faint
 	${uC.b}${uC.red}red░█${uC.r}       ${uC.red}red░█${uC.r}       ${uC.f}${uC.red}red░█${uC.r}
 	${uC.b}${uC.yellow}yellow░█${uC.r}    ${uC.yellow}yellow░█${uC.r}    ${uC.f}${uC.yellow}yellow░█${uC.r}
 	${uC.b}${uC.green}green░█${uC.r}     ${uC.green}green░█${uC.r}     ${uC.f}${uC.green}green░█${uC.r}
@@ -115,7 +118,8 @@ export const API = {
 	${uC.b}${uC.bgblack}BGblack░█${uC.r}   ${uC.bgblack}BGblack░█${uC.r}   ${uC.f}${uC.bgblack}BGblack░█${uC.r}
 	${uC.b}${uC.bgwhite}BGwhite░█${uC.r}   ${uC.bgwhite}BGwhite░█${uC.r}   ${uC.f}${uC.bgwhite}BGwhite░█${uC.r}\n`;
 				//	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				return console.log(testStr);
+				console.log(testStr);
+				return testStr;
 			}
 		},
 
@@ -137,7 +141,8 @@ export const API = {
 	${uC.b}${uC.black}░${uC.r}${uC.black}░${uC.r}${uC.f}${uC.black}░${uC.r}${uC.b}${uC.bgblack}░${uC.r}${uC.bgblack}░${uC.r}${uC.f}${uC.bgblack}░${uC.r}${uC.b}${uC.reverse}${uC.black}░${uC.r}${uC.reverse}${uC.black}░${uC.r}${uC.f}${uC.reverse}${uC.black}░${uC.r}${uC.b}${uC.reverse}${uC.bgblack}░${uC.r}${uC.reverse}${uC.bgblack}░${uC.r}${uC.f}${uC.reverse}${uC.bgblack}░${uC.r}
 	${uC.b}${uC.white}░${uC.r}${uC.white}░${uC.r}${uC.f}${uC.white}░${uC.r}${uC.b}${uC.bgwhite}░${uC.r}${uC.bgwhite}░${uC.r}${uC.f}${uC.bgwhite}░${uC.r}${uC.b}${uC.reverse}${uC.white}░${uC.r}${uC.reverse}${uC.white}░${uC.r}${uC.f}${uC.reverse}${uC.white}░${uC.r}${uC.b}${uC.reverse}${uC.bgwhite}░${uC.r}${uC.reverse}${uC.bgwhite}░${uC.r}${uC.f}${uC.reverse}${uC.bgwhite}░${uC.r}\n`;
 				//	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				return console.log(testStr);
+				console.log(testStr);
+				return testStr;
 			}
 		},
 
@@ -159,7 +164,8 @@ export const API = {
 	${uC.b}${uC.black}█${uC.r}${uC.black}█${uC.r}${uC.f}${uC.black}█${uC.r}${uC.b}${uC.bgblack}█${uC.r}${uC.bgblack}█${uC.r}${uC.f}${uC.bgblack}█${uC.r}${uC.b}${uC.reverse}${uC.black}█${uC.r}${uC.reverse}${uC.black}█${uC.r}${uC.f}${uC.reverse}${uC.black}█${uC.r}${uC.b}${uC.reverse}${uC.bgblack}█${uC.r}${uC.reverse}${uC.bgblack}█${uC.r}${uC.f}${uC.reverse}${uC.bgblack}█${uC.r}
 	${uC.b}${uC.white}█${uC.r}${uC.white}█${uC.r}${uC.f}${uC.white}█${uC.r}${uC.b}${uC.bgwhite}█${uC.r}${uC.bgwhite}█${uC.r}${uC.f}${uC.bgwhite}█${uC.r}${uC.b}${uC.reverse}${uC.white}█${uC.r}${uC.reverse}${uC.white}█${uC.r}${uC.f}${uC.reverse}${uC.white}█${uC.r}${uC.b}${uC.reverse}${uC.bgwhite}█${uC.r}${uC.reverse}${uC.bgwhite}█${uC.r}${uC.f}${uC.reverse}${uC.bgwhite}█${uC.r}\n`;
 				//	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				return console.log(testStr);
+				console.log(testStr);
+				return testStr;
 			}
 		},
 
@@ -167,7 +173,7 @@ export const API = {
 	//	<<<<<<<< duplicateCmd >>>>>>>>
 	//	==============================
 		duplicateCmd:{
-			description: 'Both util.readline and util.console api files have a command with this name. The order you listed the APIs to use/merge will determine which one is kept and which will be overwritten.',
+			description: 'Both util.readline and util.console API files have a command with this name. The order you listed the APIs to use/merge will determine which one is kept and which will be overwritten.',
 			syntax:[`${__cmd('duplicateCmd')}`],
 			aliases:[
 				'duplicate',
@@ -175,12 +181,15 @@ export const API = {
 				'dupeCmd'
 			],
 			execute(){
-				console.log(uC.r);
-				console.info(`Both util.readline and util.console command API files include a command with this name.${uC.r}\n`);
-				console.info(`In the example script that uses both command APIs, the order in which the APIs are listed in the include/merge function will determine which one is kept and which will be overwritten.${uC.r}\n`);
+				let str = `${uC.r}
+Both util.readline and util.console command API files include a command with this name.${uC.r}
+In the example script that uses both command APIs, the order in which the APIs are listed in the include/merge function will determine which one is kept and which will be overwritten.${uC.r}
 
-				console.log(`This version of the command originated from ${uC.bcyn}${uC.i}interactive.api.js${uC.r} in ${uC.bgrn}${uC.i}${uC.b}util.console${uC.r}.${uC.r}`);
-				console.log(`The version from ${uC.bmgt}${uC.i}interactive.api.js${uC.r} in ${uC.bred}${uC.i}util.readline${uC.r} either wasn't included or was overwritten by this version.${uC.r}\n`);
+This version of the command originated from ${uC.bcyn}${uC.i}interactive.API.js${uC.r} in ${uC.bgrn}${uC.i}${uC.b}util.console${uC.r}.${uC.r}
+The version from ${uC.bmgt}${uC.i}interactive.API.js${uC.r} in ${uC.bred}${uC.i}util.readline${uC.r} either wasn't included or was overwritten by this version.${uC.r}
+`;
+				console.log(str);
+				return str;
 			}
 		},
 	}

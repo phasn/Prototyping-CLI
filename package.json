@@ -1,6 +1,6 @@
 {
 	"name": "@phasn/prototyping-cli",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Modular CLI base for rapidly setting up interactive test and example scripts",
 	"main": "index.js",
 	"type": "module",

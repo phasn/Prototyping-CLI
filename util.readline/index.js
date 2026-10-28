@@ -3,7 +3,7 @@ import process			from 'node:process';
 import fs				from 'node:fs';
 import path				from 'node:path';
 import uC				from '../util.console/index.js';
-import {API as BaseAPI}	from './api.base.js';
+import {API as BaseAPI}	from './base.API.js';
 import {resolveCommand}	from './resolveCommand.js';
 
 const tabSize = 4;

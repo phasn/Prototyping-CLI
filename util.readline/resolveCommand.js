@@ -14,16 +14,23 @@ export const resolveCommand = (line, commands, prefix='') => {
 		if(cmd){
 			let match = commands[
 				Object.keys(commands)
-				.find(key => {
-					return(
-						key.toLowerCase() === cmd.toLowerCase() ||
-						( commands[key].aliases && commands[key].aliases.find(alias => alias.toLowerCase() === cmd.toLowerCase()) )
-					)
-				})
+					.find(key => {
+						return(
+							key.toLowerCase() === cmd.toLowerCase() ||
+							( commands[key].aliases && commands[key].aliases.find(alias => alias.toLowerCase() === cmd.toLowerCase()) )
+						)
+					})
 			];
 
-			if(match)	match.execute(...args);
-			else		console.error(`ERROR: '${uC.u}${cmd}${uC.xu}' is not a known command.`);
+			if(match){
+				try{
+					match.execute(...args);
+				}catch(err){
+					console.error(err);
+				}
+			}else{
+				console.error(`ERROR: '${uC.u}${cmd}${uC.xu}' is not a known command.`);
+			}
 		}
 	}
 };

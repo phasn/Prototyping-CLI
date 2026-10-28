@@ -41,9 +41,9 @@ export const codes = {
 	f8:					'\x1b[18m',		font8:					'\x1b[18m',
 	f9:					'\x1b[19m',		font9:					'\x1b[19m',
 	f10:				'\x1b[20m',		fraktur:				'\x1b[20m',
-		ff:				'\x1b[20m',			fontfraktur:		'\x1b[20m',
-											gothic:				'\x1b[20m',
-		fg:				'\x1b[20m',			fontgothic:			'\x1b[20m',
+		fontf:			'\x1b[20m',			fontfraktur:		'\x1b[20m',
+		goth:			'\x1b[20m',			gothic:				'\x1b[20m',
+		fontg:			'\x1b[20m',			fontgothic:			'\x1b[20m',
 	du:					'\x1b[21m',		doubleunderline:		'\x1b[21m',// * some terminals incorrectly use this to revert 1
 		uu:				'\x1b[21m',
 	nrm:				'\x1b[22m',		normal:					'\x1b[22m',// reverts 1 and 2
@@ -54,7 +54,8 @@ export const codes = {
 	xi:					'\x1b[23m',		unitalic:				'\x1b[23m',// reverts 3
 	xu:					'\x1b[24m',		ununderline:			'\x1b[24m',// reverts 4 and 21 (* see note by 21)
 	xblnk:				'\x1b[25m',		unblink:				'\x1b[25m',// reverts 5 and 6
-//	?:					'\x1b[26m',		unused:					'\x1b[26m',
+//	pspace:				'\x1b[26m',		proportionalspacing:	'\x1b[26m',// proportional spacing
+//		ps:				'\x1b[26m',			prop:				'\x1b[26m',
 	xrev:				'\x1b[27m',		unreverse:				'\x1b[27m',// reverts 7
 	rvl:				'\x1b[28m',		reveal:					'\x1b[28m',// reverts 8
 		xhid:			'\x1b[28m',			unhide:				'\x1b[28m',
@@ -72,8 +73,11 @@ export const codes = {
 		ppl:			'\x1b[35m',			purple:				'\x1b[35m',
 	cyn:				'\x1b[36m',		cyan:					'\x1b[36m',
 	wht:				'\x1b[37m',		white:					'\x1b[37m',
-//	#					'\x1b[38m',		customcolor				'\x1b[38m',
-	for:				'\x1b[39m',		foreground:				'\x1b[39m',// reverts 30-38 & 90-97
+	sfg:				'\x1b[38m',		setforeground:			'\x1b[38m',
+											setfg:				'\x1b[38m',
+		colfg:			'\x1b[38m',			colorforeground:	'\x1b[38m',
+		cfg:			'\x1b[38m',			colorfg:			'\x1b[38m',
+	fg:					'\x1b[39m',		foreground:				'\x1b[39m',// reverts 30-38 & 90-97
 	bgblk:				'\x1b[40m',		bgblack:				'\x1b[40m',
 	bgred:				'\x1b[41m',		bgred:					'\x1b[41m',
 	bggrn:				'\x1b[42m',		bggreen:				'\x1b[42m',
@@ -83,9 +87,20 @@ export const codes = {
 		bgppl:			'\x1b[45m',			bgpurple:			'\x1b[45m',
 	bgcyn:				'\x1b[46m',		bgcyan:					'\x1b[46m',
 	bgwht:				'\x1b[47m',		bgwhite:				'\x1b[47m',
-//	bg#					'\x1b[48m',		custombgcolor			'\x1b[48m',
+	sbg:				'\x1b[48m',		setbackground:			'\x1b[48m',
+											setbg:				'\x1b[48m',
+		colbg:			'\x1b[48m',			colorbackground:	'\x1b[48m',
+		cbg:			'\x1b[48m',			colorbg:			'\x1b[48m',
+	bg:					'\x1b[49m',		background:				'\x1b[49m',
+//	xprop:				'\x1b[50m',		unproportionalspacing:	'\x1b[50m',// reverts 26
+//		xps:			'\x1b[50m',			unprop:				'\x1b[50m',// reverts 26
 
-//	u#					'\x1b[58m',		customunderlinecolor	'\x1b[58m',
+//	sul:				'\x1b[58m',		setunderline:			'\x1b[58m',
+//											setul:				'\x1b[58m',
+//		su:				'\x1b[58m',			setu:				'\x1b[58m',
+//		colu:			'\x1b[58m',			colorunderline:		'\x1b[58m',
+//		cul:			'\x1b[58m',			colorul:			'\x1b[58m',
+//		cu:				'\x1b[58m',			coloru:				'\x1b[58m',
 
 
 	lblk:				'\x1b[90m',		lightblack:				'\x1b[90m',
@@ -153,7 +168,7 @@ export const codes = {
 
 const r = codes.r;// Don't manually export this. It gets exported in '...codes'
 
-export const br = () => console.log(`${r}\n`);
+export const br = `${r}\n`;
 export const hr = (a,b) => {
 	let color = codes.cyan;
 	let char = '-';
@@ -165,9 +180,7 @@ export const hr = (a,b) => {
 		if(codes[b] && typeof codes[b]==='string') color = codes[b];
 		if(typeof b==='string' && b.length<=2) char = b;
 	}
-	let str = `${r}${color}--------------------------------${r}`.replaceAll('-', char);
-
-	console.log(str);
+	return `${r}${color}--------------------------------${r}`.replaceAll('-', char);
 };
 
 export const __desc = (str) => `${r}  ${codes.brightmagenta}${str}${r}`;
@@ -176,8 +189,8 @@ export const __cmd = (str) => `${r}${codes.brightgreen}${str}${r}`;
 export const __arg = (str) => `${r}${codes.brightyellow}<${r}${codes.yellow}${str}${r}${codes.brightyellow}>${r}`;
 
 // These shouldn't need to be exported
-console.br = console.break = console.newline = console.n = console.nl = console.enter = br;
-console.hr = console.line = console.break = console.bar = console.divider = console.div = hr;
+console.br = console.break = console.newline = console.n = console.nl = console.enter = ()=>console.log(br());
+console.hr = console.line = console.break = console.bar = console.divider = console.div = (a,b)=>console.log(hr(a,b));
 
 // Default Methods: White text on dark background
 console.info = (str) => console.log(`${r}${codes.f}${codes.bglightwhite}${codes.blue}${codes.rev}  `, str, ` ${r}`);//

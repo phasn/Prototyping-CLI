@@ -23,17 +23,22 @@ export const API = {
 				let tab = API.get('tab');
 				let moduleName = API.get('moduleName');
 
+				let str = '';
+
 				if(cmdName){
 					let match = commands[Object.keys(commands).find(key => key.toLowerCase() === cmdName.toLowerCase())];
 					if(match){
 						if(!match.description) match.description = 'No description provided';
-						console.log(__desc(match.description));
-						console.log(`${tab()}${uC.cyan}${uC.u}Syntax${uC.xu}:${uC.r}`);
-						for(let line of match.syntax) console.log(`${tab()}${__sntx(line)}`);
+						str += __desc(match.description);
+						str += `\n${tab()}${uC.cyan}${uC.u}Syntax${uC.xu}:${uC.r}`;
+						for(let line of match.syntax) str += `\n${tab()}${__sntx(line)}`;
+						console.log(str);
 						console.br();
-						return;
+						return str;
 					}else{
-						return console.error(`ERROR: '${uC.u}${cmdName}${uC.xu}' is not a known command.`);
+						let err = `ERROR: '${uC.u}${cmdName}${uC.xu}' is not a known command.`;
+						console.error(err);
+						return err;
 					}
 				}
 
@@ -45,15 +50,18 @@ export const API = {
 
 				const center = (str, lineWidth) => str.padStart(str.length + (Math.floor((lineWidth - str.length) / 2)), ' ');
 
-				const divider = `${tab()}${uC.lcyn}${''.padStart(width, '-')}${uC.r}`;
+				const divider = `\n${tab()}${uC.lcyn}${''.padStart(width, '-')}${uC.r}`;
 
-				console.log(divider);
-				console.log(`${tab()}${uC.lgrn}${center(moduleName, width)}${uC.r}`);
-				console.log(`${tab()}${center(line2, width)}:`);
-				console.log(divider);
+				str += divider;
+				str += `\n${tab()}${uC.lgrn}${center(moduleName, width)}${uC.r}`;
+				str += `\n${tab()}${center(line2, width)}:`;
+				str += divider;
 				// for(let cmdName in commands) if(!commands[cmdName].alias) console.log(`${tab()}${uC.r}${uC.ylw}> ${uC.b}${cmdName}${uC.r}`);
-				for(let cmdName in commands) console.log(`${tab()}${uC.r}${uC.ylw}> ${uC.b}${cmdName}${uC.r}`);
-				console.log(divider);
+				for(let cmdName in commands) str += `\n${tab()}${uC.r}${uC.ylw}> ${uC.b}${cmdName}${uC.r}`;
+				str += divider;
+
+				console.log(str);
+				return str;
 			},
 		},
 

@@ -1,0 +1,6 @@
+1.0.1
+- Wrapped command execution line with try/catch in util.readline/resolveCommand.js
+- Many logging commands now console log string then return string rather than returning console.log(string)
+- Adjusted .API.js file names to be consistent with formatting being used in other packages
+- util.console functions br() and hr() now just return the strings that they previously logged
+- Added new logBR() and logHR() methods which accomplish the roles previously held by br() and hr()
