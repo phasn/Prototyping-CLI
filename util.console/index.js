@@ -168,7 +168,7 @@ export const codes = {
 
 const r = codes.r;// Don't manually export this. It gets exported in '...codes'
 
-export const br = `${r}\n`;
+export const br = () => `${r}\n`;// This needs to stay a function
 export const hr = (a,b) => {
 	let color = codes.cyan;
 	let char = '-';

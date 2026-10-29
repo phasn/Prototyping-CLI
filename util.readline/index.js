@@ -52,10 +52,10 @@ export const initRL = (ImportedAPI) => {
 	const rl = readline.createInterface({
 		input: process.stdin,
 		output: process.stdout,
-		prompt: `${uC.r}${uC.lgrn}${moduleName}${uC.wht}:${uC.blu}~${uC.r}${uC.for}$ `,
+		prompt: `${uC.r}${uC.lgrn}${moduleName}${uC.wht}:${uC.blu}~${uC.r}${uC.fg}$ `,
 		terminal: true, tabSize
 	});
-	//rl.setPrompt(`${uC.r}${uC.lgrn}${moduleName}${uC.wht}:${uC.blu}~${uC.r}${uC.for}$ `);
+	//rl.setPrompt(`${uC.r}${uC.lgrn}${moduleName}${uC.wht}:${uC.blu}~${uC.r}${uC.fg}$ `);
 
 	rl.prompt();
 
