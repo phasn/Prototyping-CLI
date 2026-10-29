@@ -4,3 +4,6 @@
 - Adjusted .API.js file names to be consistent with formatting being used in other packages
 - util.console functions br() and hr() now just return the strings that they previously logged
 - Added new logBR() and logHR() methods which accomplish the roles previously held by br() and hr()
+
+1.0.2
+- Fixed typos in the names of some escape codes
